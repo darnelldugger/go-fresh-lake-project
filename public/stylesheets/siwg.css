@@ -41,3 +41,11 @@
   position: absolute;
   width: 1px;
 }
+
+i {
+  font-size: 7em;
+}
+
+#home-icon {
+  font-size: 3rem;
+}
