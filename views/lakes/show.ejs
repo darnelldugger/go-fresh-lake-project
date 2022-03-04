@@ -1,0 +1,12 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+  <p>Details provided by <%= lake.owner.name %> </p>
+  <h3><%= lake.name %> </h3>
+  <h3><%= lake.location %> </h3>
+  <h3><%= lake.acres %> Acres</h3>
+  <h3>Public? <%= lake.public %> </h3>
+</section>
+
+<%- include('../partials/footer') %>

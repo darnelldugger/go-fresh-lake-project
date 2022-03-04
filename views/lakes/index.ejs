@@ -3,12 +3,22 @@
 
 <section>
   <h1>Discover Lakes</h1>
-  <i class="fas fa-circle-plus"></i>
+  <form action="/lakes/new" method="GET">
+    <button type="submit">
+      <i class="fas fa-circle-plus" ></i>
+    </button>
+  </form>
   <ul>
   <% lakes.forEach(lake => { %>
-    <li><%= lake.name  %> </li>      
+    <li>
+      <a href="/lakes/<%= lake._id %>">
+        <%= lake.name  %> 
+      </a>
+    </li>      
   <% }) %>
   </ul>
 </section>
 
 <%- include('../partials/footer') %>
+      
+

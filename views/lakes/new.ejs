@@ -1,0 +1,25 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<h1>Enter a New Lake</h1>
+<form action="/lakes" method="post">
+  <label>
+    <input type="text" name="name" placeholder="Lake Name">
+  </label><br>
+  <label>
+    <input type="text" name="location" placeholder="City, State">
+  </label><br>
+  <label>
+    <input type="text" name="acres" placeholder="Number of Acres">
+  </label><br>
+  <label>Is this lake public?
+    <select name="public">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </label><br>
+  <button type="submit">Add Lake</button>
+</form>
+
+
+<%- include('../partials/footer') %>

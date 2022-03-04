@@ -4,9 +4,8 @@ const Schema = mongoose.Schema
 
 const lakeSchema = new Schema({
   name: String,
-  city: String,
-  state: String,
-  public: Boolean,
+  location: String,
+  public: String,
   acres: Number,
   owner: {type: Schema.Types.ObjectId, ref: "Profile"}
 })
