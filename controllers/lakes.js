@@ -55,10 +55,29 @@ function edit(req, res) {
   })
 }
 
+function update(req, res) {
+  Lake.findById(req.params.id)
+  .then(lake => {
+    if (lake.owner.equals(req.user.profile._id)) {
+      lake.updateOne(req.body, {new: true})
+      .then (()=> {
+        res.redirect(`/lakes/${lake._id}`)
+      })
+    } else {
+      throw new Error ('Not authorized to edit')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/lakes`)
+})
+}
+
 export {
   index,
   newLake as new,
   create,
   show,
   edit,
+  update,
 }
