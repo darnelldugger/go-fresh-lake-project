@@ -8,10 +8,10 @@
       <i class="fas fa-circle-plus" ></i>
     </button>
   </form>
-  <ul>
+  <ul class="lake-list">
   <% lakes.forEach(lake => { %>
-    <li>
-      <a href="/lakes/<%= lake._id %>">
+    <li id="lake-list-width">
+      <a href="/lakes/<%= lake._id %> " id="list-font">
         <%= lake.name%>,&nbsp<%= lake.state %> 
       </a>
     </li>      

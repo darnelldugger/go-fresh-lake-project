@@ -8,14 +8,14 @@
       <i class="fas fa-magnifying-glass" id="home-icon"></i>
     </a>
     <form action="/fishes/new" method="GET">
-      <button type="submit">Add a Fish</button>
+      <button type="submit" id="nav-btn">Add a Fish</button>
     </form>
-    <button> <a href="/profiles">
+    <button id="user-nav-btn"> <a href="/profiles">
       <i class="fas fa-user-group"></i>
     </a>
   </button>
     <form action="/lakes/new" method="GET">
-      <button type="submit">Add a Lake</button>
+      <button type="submit" id="nav-btn">Add a Lake</button>
     </form>
     <% if (user) { %>
       <a href="/auth/logout">
