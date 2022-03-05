@@ -1,0 +1,25 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+<section>
+<h1>Edit</h1>
+<form action="/lakes/<%= lake._id %>?_method=PUT" method="post">
+  <label>
+    <input type="text" name="name" value="<%= lake.name %>" autocomplete="off">
+  </label><br>
+  <label>
+    <input type="text" name="state" value="<%= lake.state %>" autocomplete="off">
+  </label><br>
+  <label>
+    <input type="text" name="acres" value="<%= lake.acres %>" autocomplete="off">
+  </label><br>
+  <label>Is this lake public?
+    <select name="public">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </label><br>
+  <button type="submit">Submit Edit</button>
+</form>
+</section>
+
+<%- include('../partials/footer') %>

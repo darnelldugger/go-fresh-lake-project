@@ -23,7 +23,7 @@ function newLake(req, res) {
 
 function  create(req, res) {
   req.body.owner = req.user.profile._id
-  req.body.name = !!req.body.name
+  // req.body.name = !!req.body.name
   Lake.create(req.body)
   .then(lake => {
     res.redirect('/lakes')
@@ -45,9 +45,20 @@ function show(req, res) {
   })
 }
 
+function edit(req, res) {
+  Lake.findById(req.params.id)
+  .then(lake => {
+    res.render('lakes/edit', {
+      lake,
+      title: "Edit Lake"
+    })
+  })
+}
+
 export {
   index,
   newLake as new,
   create,
   show,
+  edit,
 }
