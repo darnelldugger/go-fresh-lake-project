@@ -9,6 +9,8 @@ const lakeSchema = new Schema({
   acres: Number,
   owner: {type: Schema.Types.ObjectId, ref: "Profile"},
   pisces: [{type: Schema.Types.ObjectId, ref: 'Fish'}]
+}, {
+  timestamps: true
 })
 
 const Lake = mongoose.model('Lake', lakeSchema)

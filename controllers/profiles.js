@@ -1,4 +1,5 @@
 import { Profile } from '../models/profile.js'
+import { Fish } from '../models/fish.js'
 
 function index(req, res) {
   Profile.find({})
