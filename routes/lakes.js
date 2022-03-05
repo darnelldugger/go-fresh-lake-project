@@ -9,7 +9,9 @@ router.get('/new', isLoggedIn, lakesCtrl.new)
 router.post('/', isLoggedIn, lakesCtrl.create)
 router.get('/:id', lakesCtrl.show)
 router.get('/:id/edit', isLoggedIn, lakesCtrl.edit)
+router.post('/:id/fishes', lakesCtrl.addToFishCaught)
 router.put('/:id', isLoggedIn, lakesCtrl.update)
+
 
 export {
   router

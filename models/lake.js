@@ -7,7 +7,8 @@ const lakeSchema = new Schema({
   state: String,
   public: String,
   acres: Number,
-  owner: {type: Schema.Types.ObjectId, ref: "Profile"}
+  owner: {type: Schema.Types.ObjectId, ref: "Profile"},
+  pisces: [{type: Schema.Types.ObjectId, ref: 'Fish'}]
 })
 
 const Lake = mongoose.model('Lake', lakeSchema)

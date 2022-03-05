@@ -14,6 +14,23 @@
       </form>
     <% } %> 
   </div>
+  <ul>
+    <% lake.pisces.forEach(fishCaught => { %>
+     <li><%= fishCaught.name %> </li>
+    <% }) %>
+  </ul>
 </section>
+</div>
+  <form action="/lakes/<%= lake._id %>/fishes " method="post">
+    <select name="fishId">
+      <% fishes.forEach(fish => { %>
+       <option value="<%= fish._id %>"><%= fish.name %> 
+      </option>
+      <% }) %>
+    </select>
+    <button type="submit">Add Fish to Lake</button>
+  </form>
+  
+
 
 <%- include('../partials/footer') %>

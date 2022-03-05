@@ -1,4 +1,5 @@
 import { Lake } from '../models/lake.js'
+import { Fish } from '../models/fish.js'
 
 function index(req, res) {
   Lake.find({})
@@ -36,11 +37,15 @@ function  create(req, res) {
 
 function show(req, res) {
   Lake.findById(req.params.id)
+  .populate("pisces")
   .populate("owner")
-  .then(lake => {
-    res.render('lakes/show', {
-      lake: lake,
-      title: "Details"
+  .exec(function(err, lake) {
+    Fish.find({_id: {$nin: lake.pisces}}, function(err, fishes) {
+      res.render('lakes/show', {
+        lake: lake,
+        title: 'Lake Detail', 
+        fishes: fishes,
+      })
     })
   })
 }
@@ -73,6 +78,15 @@ function update(req, res) {
 })
 }
 
+function addToFishCaught (req, res) {
+  Lake.findById(req.params.id, function(err, lake) {
+    lake.pisces.push(req.body.fishId)
+    lake.save(function(err) {
+      res.redirect(`/lakes/${lake._id}`)
+    })
+  })
+}
+
 export {
   index,
   newLake as new,
@@ -80,4 +94,5 @@ export {
   show,
   edit,
   update,
+  addToFishCaught,
 }
