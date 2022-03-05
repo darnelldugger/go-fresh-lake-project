@@ -19,7 +19,14 @@ function newFish(req, res) {
  })
 }
 
+function create(req, res) {
+  Fish.create(req.body, function (err, fish) {
+    res.redirect('/fishes/new')
+  })
+}
+
 export {
   index,  
   newFish as new,
+  create,
 }
