@@ -13,8 +13,19 @@
   <h1>Hello <%= isSelf ? "Angler" : profile.name %>!</h1>
   
 <main>
+  <section class="personal-best-list">
+    <h2>Your Personal Best</h2>
+    <form action="/profiles/<%= profile._id %>/personalbest " id="add-personal-best" method="post"
+    >
+      <label for="name-textarea">Name of Fish:</label>
+      <textarea name="name" id="name-textarea" cols="15" rows="1"></textarea>
+      <label for="weight-textarea">Weight:</label>
+      <textarea name="weight" id="weight-textarea" cols="5" rows="1"></textarea>
+      <button type="submit">Add PB</button>
+    </form>
+  </section>
   <section class="profile-add-lake">
-    <h1>Lakes that you have visited</h1>
+    <h2>Lakes that you have visited</h2>
     <ul>
       <% profile.lagoon.forEach(lakeVisit => { %>
        <li><%= lakeVisit.name %> </li>
@@ -29,6 +40,7 @@
       </select>
       <button type="submit">Add Lake To Your Profile</button>
     </form>
+    
   </section>
 
 </main>
