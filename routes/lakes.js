@@ -10,6 +10,7 @@ router.post('/', isLoggedIn, lakesCtrl.create)
 router.get('/:id', lakesCtrl.show)
 router.get('/:id/edit', isLoggedIn, lakesCtrl.edit)
 router.post('/:id/fishes', lakesCtrl.addToFishCaught)
+router.post('/:id/reviews', lakesCtrl.createReview)
 router.put('/:id', isLoggedIn, lakesCtrl.update)
 
 

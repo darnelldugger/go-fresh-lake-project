@@ -87,6 +87,15 @@ function addToFishCaught (req, res) {
   })
 }
 
+function createReview(req, res) {
+  Lake.findById(req.params.id, function(err, lake) {
+    lake.reviews.push(req.body)
+    lake.save(function(err) {
+      res.redirect(`/lakes/${lake._id}`)
+    })
+  })
+}
+
 export {
   index,
   newLake as new,
@@ -95,4 +104,5 @@ export {
   edit,
   update,
   addToFishCaught,
+  createReview,
 }

@@ -18,9 +18,9 @@ const pbSchema = new Schema ({
 const profileSchema = new mongoose.Schema({
   name: String,
   avatar: String,
-  personalBest: [pbSchema],
   pisces: [{type: Schema.Types.ObjectId, ref: 'Fish'}],
-  lagoon: [{type: Schema.Types.ObjectId, ref: 'Lake'}]
+  lagoon: [{type: Schema.Types.ObjectId, ref: 'Lake'}],
+  personalBest: [pbSchema],
 }, {
   timestamps: true
 }

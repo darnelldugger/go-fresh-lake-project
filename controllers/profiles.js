@@ -50,8 +50,19 @@ function addLakeVisit(req, res){
   })
 }
 
+function createPb(req, res){
+  Profile.findById(req.params.id, function(err, profile) {
+    profile.personalBest.push(req.body)
+    profile.save(function(err) {
+      res.redirect(`/profiles/${profile._id}`)
+    })
+  })
+}
+
+
 export {
   index,
   show,
   addLakeVisit,
+  createPb,
 }

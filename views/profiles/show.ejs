@@ -15,12 +15,32 @@
 <main>
   <section class="personal-best-list">
     <h2>Your Personal Best</h2>
-    <form action="/profiles/<%= profile._id %>/personalbest " id="add-personal-best" method="post"
+      <% if (profile.personalBest.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Fish Name</th>
+              <th>Weight</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% profile.personalBest.forEach(function(pb) { %>
+              <tr>
+                <td><%= pb.name %> </td>
+                <td><%= pb.weight %> </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% } else { %>
+          <p>You Have Not Recorded A Personal Best</p>
+      <% } %>
+    <form action="/profiles/<%= profile._id %>/personalbest" id="add-personal-best" method="post"
     >
       <label for="name-textarea">Name of Fish:</label>
-      <textarea name="name" id="name-textarea" cols="15" rows="1"></textarea>
+      <textarea name="name" id="name-textarea" cols="15" rows="1" placeholder="Largemouth Bass"></textarea>
       <label for="weight-textarea">Weight:</label>
-      <textarea name="weight" id="weight-textarea" cols="5" rows="1"></textarea>
+      <textarea name="weight" id="weight-textarea" cols="5" rows="1" placeholder="8 lbs"></textarea>
       <button type="submit">Add PB</button>
     </form>
   </section>
@@ -40,7 +60,7 @@
       </select>
       <button type="submit">Add Lake To Your Profile</button>
     </form>
-    
+
   </section>
 
 </main>
