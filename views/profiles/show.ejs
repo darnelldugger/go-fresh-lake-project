@@ -1,18 +1,35 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<main>
-  <% if (profile.avatar) { %>
-    <div>
-      <img 
-        class="profile-avatar"
-        src="<%= profile.avatar %>" 
-        alt="<%= profile.name %> avatar"
-      >
-    </div>
+<% if (profile.avatar) { %>
+  <div>
+    <img 
+    class="profile-avatar"
+    src="<%= profile.avatar %>" 
+    alt="<%= profile.name %> avatar"
+    >
+  </div>
   <% } %>
   <h1>Hello <%= isSelf ? "Angler" : profile.name %>!</h1>
-
+  
+<main>
+  <section class="profile-add-lake">
+    <h1>Lakes that you have visited</h1>
+    <ul>
+      <% profile.lagoon.forEach(lakeVisit => { %>
+       <li><%= lakeVisit.name %> </li>
+      <% }) %>
+    </ul>
+    <form action="/profiles/<%= profile._id %>/lakes"/ method="post">
+      <select name="lakeId">
+        <% lakes.forEach(lake => { %>
+         <option value="<%= lake._id %>"><%= lake.name %> 
+        </option>
+        <% }) %>
+      </select>
+      <button type="submit">Add Lake To Your Profile</button>
+    </form>
+  </section>
 
 </main>
 

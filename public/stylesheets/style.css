@@ -125,3 +125,7 @@ form > button {
   padding: 2rem;
   margin: 2rem;
 }
+
+img {
+  border-radius: 10rem;
+}
