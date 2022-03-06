@@ -1,33 +1,48 @@
-  <% if (!user) { %>
+ 
+ 
+ <% if (!user) { %>
     <link rel="stylesheet" href="/stylesheets/siwg.css">
   <% } %>
 </head>
 <body>
-  <nav>
-    <a href="/lakes">
-      <i class="fas fa-magnifying-glass" id="home-icon"></i>
-    </a>
-    <form action="/fishes/new" method="GET">
-      <button type="submit" id="nav-btn">Add a Fish</button>
-    </form>
-    <button id="user-nav-btn"> <a href="/profiles">
-      <i class="fas fa-user-group"></i>
-    </a>
-  </button>
-    <form action="/lakes/new" method="GET">
-      <button type="submit" id="nav-btn">Add a Lake</button>
-    </form>
-    <% if (user) { %>
-      <a href="/auth/logout">
-        <button type="submit">Logout</button>
-      </a>
-    <% } else { %>
-      <a href="/auth/google" class="siwg-link">
-        <button type="submit" class="siwg">
-          <img id="siwg-image" alt="Sign in with Google" />
-        </button>
-      </a>
-    <% } %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Go Fresh Lake</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/lakes">Discover</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/lakes/new">Add A Lake</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/fishes/new">Add A Fish</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profiles">View Anglers</a>
+          </li>
+
+          <li>
+            <% if (user) { %>
+              <a href="/auth/logout">
+                <button type="submit">Logout</button>
+              </a>
+            <% } else { %>
+              <a href="/auth/google" class="siwg-link">
+                <button type="submit" class="siwg">
+                  <img id="siwg-image" alt="Sign in with Google" />
+                </button>
+              </a>
+            <% } %>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
+  
 
   
