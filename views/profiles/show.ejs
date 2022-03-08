@@ -13,37 +13,43 @@
   <h1>Hello <%= isSelf ? "Angler" : profile.name %>!</h1>
   
 <main>
-  <section class="personal-best-list">
-    <h2>Your Personal Best</h2>
-      <% if (profile.personalBest.length) { %>
-        <table>
-          <thead>
-            <tr>
-              <th>Fish Name</th>
-              <th>Weight</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% profile.personalBest.forEach(function(pb) { %>
-              <tr>
-                <td><%= pb.name %> </td>
-                <td><%= pb.weight %> </td>
-              </tr>
-            <% }) %>
-          </tbody>
-        </table>
-        <% } else { %>
-          <p>You Have Not Recorded A Personal Best</p>
-      <% } %>
-    <form action="/profiles/<%= profile._id %>/personalbest" id="add-personal-best" method="post"
-    >
-      <label for="name-textarea">Name of Fish:</label>
-      <textarea name="name" id="name-textarea" cols="15" rows="1" placeholder="Largemouth Bass"></textarea>
-      <label for="weight-textarea">Weight:</label>
-      <textarea name="weight" id="weight-textarea" cols="5" rows="1" placeholder="8 lbs"></textarea>
-      <button type="submit">Add PB</button>
+  <% if (profile.pbs.length)  {%>
+    <h2>
+      Personal Best List
+    </h2>
+    <% profile.pbs.forEach(personalbest => { %>
+      <h4>
+         Your personal best for <%= personalbest.name %> is <%= personalbest.weight %> lbs
+      </h4>
+      <% if (isSelf) { %> 
+        <form 
+          action="/profiles/personalbest/<%= personalbest._id %>?_method=DELETE" 
+          method="POST"
+          style="display: inline-block;"
+        >
+          <button type="submit">Delete<%= personalbest.name %></button>
+        </form>
+      <% } %> 
+    <% }) %>
+  <% } else { %>
+    <h2>
+      <%= isSelf ? "You don't" : `${profile.name} doesn't` %> have any personal best recorded.
+    </h2> 
+  <% } %> 
+  <% if (isSelf)  {%> 
+    <h2>Record a Personal Best</h2>
+    <form action="/profiles/<%= profile._id %>/personalbest" method="POST">
+      <label>
+        Name: 
+        <input type="text" name="name" autocomplete="off">
+      </label>
+      <label>
+        Age: 
+        <input type="number" name="weight" autocomplete="off">
+      </label>
+      <button type="submit">Add Personal Best</button>
     </form>
-  </section>
+  <% } %>
   <section class="profile-add-lake">
     <h2>Lakes that you have visited</h2>
     <ul>

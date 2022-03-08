@@ -5,7 +5,7 @@ import { Fish } from '../models/fish.js'
 function index(req, res) {
   Profile.find({})
   .then(profiles => {
-    res.render('profiles/index', {
+    res.render('profiles', {
       profiles,
 			title: "Explore Anglers"
     })
@@ -50,19 +50,43 @@ function addLakeVisit(req, res){
   })
 }
 
-function createPb(req, res){
-  Profile.findById(req.params.id, function(err, profile) {
-    profile.personalBest.push(req.body)
-    profile.save(function(err) {
-      res.redirect(`/profiles/${profile._id}`)
+function createPersonalBest(req, res){
+  Profile.findById(req.user.profile._id)
+  .then(profile => {
+    profile.pbs.push(req.body)
+    profile.save()
+    .then(() => {
+      res.redirect(`/profiles/${req.user.profile._id}`)
     })
   })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
 }
+
+function deletePersonalBest(req, res){
+  Profile.findById(req.user.profile._id)
+  .then(profile => {
+    profile.pbs.remove({_id: req.params.id})
+    profile.save()
+    .then(()=> {
+      res.redirect(`/profiles/${req.user.profile._id}`)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
+
 
 
 export {
   index,
   show,
   addLakeVisit,
-  createPb,
+  createPersonalBest,
+  deletePersonalBest,
 }

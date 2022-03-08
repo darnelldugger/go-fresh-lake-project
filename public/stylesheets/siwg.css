@@ -49,3 +49,6 @@ i {
 #home-icon {
   font-size: 3rem;
 }
+.btn {
+  border-style: solid;
+}

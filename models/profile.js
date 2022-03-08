@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-const pbSchema = new Schema ({
+const personalBestSchema = new Schema ({
   name: {
     type: String,
   },
@@ -20,7 +20,7 @@ const profileSchema = new mongoose.Schema({
   avatar: String,
   pisces: [{type: Schema.Types.ObjectId, ref: 'Fish'}],
   lagoon: [{type: Schema.Types.ObjectId, ref: 'Lake'}],
-  personalBest: [pbSchema],
+  pbs: [personalBestSchema],
 }, {
   timestamps: true
 }
