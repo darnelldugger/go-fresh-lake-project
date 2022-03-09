@@ -2,7 +2,7 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1><%= title %> </h1>
+  <h1 class="add-pages-header"><%= title %> </h1>
   <p>View list of fish to ensure it is not already added. 
   <select>
     <% fishes.forEach(function(fish) { %>
@@ -11,8 +11,8 @@
     </select>
   </p>
   <form action="/fishes" method="post">
-    <label for="name-input">Name:</label>
-    <input type="text" name="name" id="name-input">
+    <label for="name-input"></label>
+    <input type="text" name="name" id="name-input" placeholder="Name of Fish">
     <button type="submit">Add Fish</button>
   </form>
   </main>

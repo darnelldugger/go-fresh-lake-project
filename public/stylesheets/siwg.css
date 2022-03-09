@@ -1,9 +1,11 @@
 .siwg {
   background: url(/images/auth/google/siwg_light_normal.png);
   cursor: pointer;
-  border: none;
+  border-style: solid;
   width: 191px;
   height: 46px;
+  background-color: white;
+
 }
 
 .siwg-link {
@@ -42,9 +44,7 @@
   width: 1px;
 }
 
-i {
-  font-size: 7em;
-}
+
 
 #home-icon {
   font-size: 3rem;
