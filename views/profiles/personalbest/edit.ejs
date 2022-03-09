@@ -1,0 +1,10 @@
+<section>
+  <h1>Edit</h1>
+  <form action="/personalbest/<%= personalbest.id %>?_method=PUT" method="post">
+    <label>
+      Weight:
+      <input type="text" name="weight" value="<%= pbs.weight %>" autocomplete="off">
+    </label>
+    <button type="submit">Update Weight</button>
+  </form>
+</section>

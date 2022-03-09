@@ -1,18 +1,18 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<% if (profile.avatar) { %>
-  <div>
-    <img 
-    class="profile-avatar"
-    src="<%= profile.avatar %>" 
-    alt="<%= profile.name %> avatar"
-    >
-  </div>
-  <% } %>
-  <h1>Hello <%= isSelf ? "Angler" : profile.name %>!</h1>
-  
+
 <main>
+  <% if (profile.avatar) { %>
+    <div>
+      <img 
+      class="profile-avatar"
+      src="<%= profile.avatar %>" 
+      alt="<%= profile.name %> avatar"
+      >
+    </div>
+    <% } %>
+    <h1>Hello <%= isSelf ? "Angler" : profile.name %>!</h1>
   <% if (profile.pbs.length)  {%>
     <h2>
       Personal Best List
@@ -23,11 +23,19 @@
       </h4>
       <% if (isSelf) { %> 
         <form 
+          action="/profiles/personalbest/<%= profile._id %>/edit"
+          method="get">
+          <button type="submit">Update <%= personalbest.name %></button>
+        </form>
+      <% } %> 
+
+      <% if (isSelf) { %> 
+        <form 
           action="/profiles/personalbest/<%= personalbest._id %>?_method=DELETE" 
           method="POST"
-          style="display: inline-block;"
+          
         >
-          <button type="submit">Delete<%= personalbest.name %></button>
+          <button type="submit">Delete <%= personalbest.name %></button>
         </form>
       <% } %> 
     <% }) %>
@@ -39,13 +47,11 @@
   <% if (isSelf)  {%> 
     <h2>Record a Personal Best</h2>
     <form action="/profiles/<%= profile._id %>/personalbest" method="POST">
-      <label>
-        Name: 
-        <input type="text" name="name" autocomplete="off">
+      <label> 
+        <input type="text" name="name" autocomplete="off" placeholder="Name of Fish">
       </label>
       <label>
-        Age: 
-        <input type="number" name="weight" autocomplete="off">
+        <input type="number" name="weight" autocomplete="off" placeholder="Weight of Fish">
       </label>
       <button type="submit">Add Personal Best</button>
     </form>

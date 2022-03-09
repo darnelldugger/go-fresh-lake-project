@@ -65,6 +65,23 @@ function createPersonalBest(req, res){
   })
 }
 
+function showPersonalBest(req, res) {
+  Profile.findById(req.params.id)
+  .then(profile => {
+    if (profile.pbs.equals(req.profile.pbs.id)) 
+    console.log(profile)
+    res.render('profiles/personalbest/edit', {
+      pbs,
+      title: 'Edit Personal Best'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
+
 function deletePersonalBest(req, res){
   Profile.findById(req.user.profile._id)
   .then(profile => {
@@ -73,6 +90,26 @@ function deletePersonalBest(req, res){
     .then(()=> {
       res.redirect(`/profiles/${req.user.profile._id}`)
     })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
+function update(req, res) {
+
+  pbs.findById(req.params.pbs.id)
+  .then(pbs => {
+    if(profile.pbs.equals(req.params.pbs_id)) {
+      console.log(pbs)
+      pbs.updateOne(req.body, {new: true})
+      .then(() => {
+        res.redirect(`profiles/${profile._id}`)
+      })
+    } else {
+      throw new Error ('Not authorized')
+    }
   })
   .catch(err => {
     console.log(err)
@@ -89,4 +126,6 @@ export {
   addLakeVisit,
   createPersonalBest,
   deletePersonalBest,
+  showPersonalBest,
+  update,
 }
