@@ -43,7 +43,7 @@ function show(req, res) {
     Fish.find({_id: {$nin: lake.pisces}}, function(err, fishes) {
       res.render('lakes/show', {
         lake: lake,
-        title: 'Lake Detail', 
+        title: 'Lake Details', 
         fishes: fishes,
       })
     })

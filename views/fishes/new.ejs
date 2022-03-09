@@ -3,13 +3,13 @@
 
 <main>
   <h1 class="add-pages-header"><%= title %> </h1>
-  <p>View list of fish to ensure it is not already added. 
+  <h4>View list of fish to ensure it is not already added. 
   <select>
     <% fishes.forEach(function(fish) { %>
       <option><%= fish.name %> </option>
       <% }) %>
     </select>
-  </p>
+  </h4>
   <form action="/fishes" method="post">
     <label for="name-input"></label>
     <input type="text" name="name" id="name-input" placeholder="Name of Fish">

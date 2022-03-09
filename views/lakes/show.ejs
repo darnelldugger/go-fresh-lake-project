@@ -1,82 +1,71 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<section>
-  <p>Details provided by angler, <%= lake.owner.name %>. </p>
-  <h3><%= lake.name %> </h3>
-  <h3><%= lake.state %> </h3>
-  <h3><%= lake.acres %> Acres</h3>
-  <h3>Public? <%= lake.public %> </h3>
-  <div class="details-edit-sec">
-    <% if (lake.owner.equals(user?.profile._id)) { %> 
-      <form action="/lakes/<%= lake._id %>/edit" method="get">
-        <button class="btn" type="submit">Edit Lake</button>
-      </form>
-    <% } %> 
-  </div>
+<main>
+  <section class="top-details">
+    <h4>Details provided by angler, <%= lake.owner.name %>. </h4>
+    <h1><%= lake.name %> </h1>
+    <h1>State: <%= lake.state %> </h1>
+    <h1><%= lake.acres %> Acres</h1>
+    <h1>Public? <%= lake.public %> </h1>
+      <% if (lake.owner.equals(user?.profile._id)) { %> 
+        <form action="/lakes/<%= lake._id %>/edit" method="get">
+          <button type="submit" class="details-btn">Edit Lake</button>
+        </form>
+      <% } %> 
+   
 
-</section>
-<section class="add-fish-list">
-  <h1>Fish That Have Been Caught At This Lake</h1>
-  <ul>
-  <% lake.pisces.forEach(fishCaught => { %>
-    <li><%= fishCaught.name %> </li>
-    <% }) %>
-  </ul>
-  <form action="/lakes/<%= lake._id %>/fishes " method="post">
-    <select name="fishId">
-      <% fishes.forEach(fish => { %>
-       <option value="<%= fish._id %>"><%= fish.name %> 
-      </option>
+  </section>
+  <section class="add-fish-list">
+    <h1 class="add-pages-header">Fish That Have Been Caught At This Lake</h1>
+    <ul class="lake-list">
+    <% lake.pisces.forEach(fishCaught => { %>
+      <li id="lake-show-list"><%= fishCaught.name %> </li>
       <% }) %>
-    </select>
-    <button type="submit">Add Fish to Lake</button>
-  </form>
-  
-</section>
-
-<section class="reviews">
-  <h2>Reviews</h2>
-  <form 
-    id="add-review-form"
-    action="/lakes/<%= lake._id %>/reviews"
-    method="POST"
-  >
-    <label for="content-textarea">Review:</label>
-    <textarea name="content" id="content-textarea"></textarea>
-    <label for="rating-select">Rating:</label>
-    <select name="rating" id="rating-select">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5" selected>5</option>
-    </select>
-    <button type="submit">Add Review</button>
-  </form>
-  <% if (lake.reviews.length) { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Review</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% lake.reviews.forEach(function(review) { %>
-          <tr>
-            <td><%= review.createdAt.toLocaleDateString() %></td>
-            <td><%= review.content %></td>
-            <td><%= review.rating %></td>
-          </tr>
+    </ul>
+    <form action="/lakes/<%= lake._id %>/fishes " method="post">
+      <select name="fishId">
+        <% fishes.forEach(fish => { %>
+        <option value="<%= fish._id %>"><%= fish.name %> 
+        </option>
         <% }) %>
-      </tbody>
-    </table>
-  <% } else { %>
-    <h3>No Reviews Yet</h3>
-  <% } %>
-</section>
+      </select>
+      <button type="submit">Add Fish to Lake</button>
+    </form>
+    
+    <h1 class="add-pages-header">Add Insights To This Lake</h1>
+    <form 
+      id="add-review-form"
+      action="/lakes/<%= lake._id %>/reviews"
+      method="POST"
+    >
+      <label for="content-textarea"></label>
+      <textarea name="content" id="content-textarea" placeholder="Insight"></textarea>
+      <button type="submit">Add Insight</button>
+    </form>
+    <% if (lake.reviews.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Review</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% lake.reviews.forEach(function(review) { %>
+            <tr>
+              <td><%= review.createdAt.toLocaleDateString() %></td>
+              <td><%= review.content %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h3>No Insights Yet</h3>
+    <% } %>
+  </section>
+
+</main>
 
 
 <%- include('../partials/footer') %>
