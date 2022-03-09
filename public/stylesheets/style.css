@@ -24,7 +24,7 @@ body {
   margin: 0;
 }
 
-nav {
+.navbar navbar-expand-lg {
   background-color: white;
   font-size: 1.6rem;
   display: flex;

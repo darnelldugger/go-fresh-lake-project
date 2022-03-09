@@ -66,18 +66,21 @@ function createPersonalBest(req, res){
 }
 
 function showPersonalBest(req, res) {
-  Profile.findById(req.params.id)
-  .then(profile => {
-    if (profile.pbs.equals(req.profile.pbs.id)) 
-    console.log(profile)
-    res.render('profiles/personalbest/edit', {
-      pbs,
-      title: 'Edit Personal Best'
-    })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect(`/profiles/${req.user.profile._id}`)
+  console.log('profileId', req.params.profileId)
+  console.log('pbId', req.params.pbId) 
+  Profile.findById(req.params.profileId).then(profile => {
+    const pb = profile.pbs.indexOf(p => {
+      console.log(p)
+      p._id.equals(req.params.pbId)})
+    console.log(pb)
+  //   res.render('profiles/personalbest/edit', {
+  //     pbs,
+  //     title: 'Edit Personal Best'
+  //   })
+  // })
+  // .catch(err => {
+  //   console.log(err)
+  //   res.redirect(`/profiles/${req.user.profile._id}`)
   })
 }
 
@@ -98,23 +101,28 @@ function deletePersonalBest(req, res){
 }
 
 function update(req, res) {
+  Profile.findById(req.user.profile._id).then(profile => {
 
-  pbs.findById(req.params.pbs.id)
-  .then(pbs => {
-    if(profile.pbs.equals(req.params.pbs_id)) {
-      console.log(pbs)
-      pbs.updateOne(req.body, {new: true})
-      .then(() => {
-        res.redirect(`profiles/${profile._id}`)
-      })
-    } else {
-      throw new Error ('Not authorized')
-    }
   })
-  .catch(err => {
-    console.log(err)
-    res.redirect(`/profiles/${req.user.profile._id}`)
-  })
+    
+
+
+  // pbs.findById(req.params.id)
+  // .then(pbs => {
+  //   if(profile.pbs.equals(req.params.pbs_id)) {
+  //     console.log(pbs)
+  //     pbs.updateOne(req.body, {new: true})
+  //     .then(() => {
+  //       res.redirect(`profiles/${profile._id}`)
+  //     })
+  //   } else {
+  //     throw new Error ('Not authorized')
+  //   }
+  // })
+  // .catch(err => {
+  //   console.log(err)
+  //   res.redirect(`/profiles/${req.user.profile._id}`)
+  // })
 }
 
 
