@@ -1,26 +1,26 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
-
-<h1>Add A Lake To This Site</h1>
-<p>Check list on the home page to ensure that it has not already been added</p>
-<form action="/lakes" method="post">
-  <label>
-    <input type="text" name="name" placeholder="Lake Name">
-  </label><br>
-  <label>
-    <input type="text" name="state" placeholder="Lake State">
-  </label><br>
-  <label>
-    <input type="text" name="acres" placeholder="Number of Acres">
-  </label><br>
-  <label>Is this lake public?
-    <select name="public">
-      <option value="Yes">Yes</option>
-      <option value="No">No</option>
-    </select>
-  </label><br>
-  <button type="submit">Add Lake</button>
-</form>
-
+<main>
+  <h1>Add A Lake To This Site</h1>
+  <p>Check list on the home page to ensure that it has not already been added</p>
+  <form action="/lakes" method="post">
+    <label>
+      <input type="text" name="name" placeholder="Lake Name">
+    </label><br>
+    <label>
+      <input type="text" name="state" placeholder="Lake State">
+    </label><br>
+    <label>
+      <input type="text" name="acres" placeholder="Number of Acres">
+    </label><br>
+    <label>Is this lake public?
+      <select name="public">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </label><br>
+    <button type="submit">Add Lake</button>
+  </form>
+</main>
 
 <%- include('../partials/footer') %>

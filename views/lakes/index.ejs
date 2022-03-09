@@ -1,34 +1,31 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
-<header>
+<header id="main-header">
   <div class="card bg-dark text-white">
     <img src="https://i.imgur.com/EoVpasK.jpg" class="card-img" alt="...">
     <div class="card-img-overlay">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text">Last updated 3 mins ago</p>
+      <h1 class="card-title">Welcome to Go Fresh Lake</h1>
+      <h4 class="card-text">Discover and add fresh lakes across the country. We are a free site for anglers to add their wealth of fishing knowledge to specific lakes.</h4>
+      
     </div>
   </div>
 </header>
   
+<main>
+  <section id="mainSec">
+    <h1 id="mainH1">Discover and add fresh lakes from across the United States.</h1>
 
-<section>
-  <h1>Discover Lakes</h1>
-  <form action="/lakes/new" method="GET">
-    <button type="submit">
-      <i class="fas fa-circle-plus" ></i>
-    </button>
-  </form>
-  <ul class="lake-list">
-  <% lakes.forEach(lake => { %>
-    <li id="lake-list-width">
-      <a href="/lakes/<%= lake._id %> " id="list-font">
-        <%= lake.name%>,&nbsp<%= lake.state %> 
-      </a>
-    </li>      
-  <% }) %>
-  </ul>
-</section>
+    <ul class="lake-list">
+    <% lakes.forEach(lake => { %>
+      <li id="lake-list-width">
+        <a href="/lakes/<%= lake._id %> " id="list-font">
+          <%= lake.name%>,&nbsp<%= lake.state %> 
+        </a>
+      </li>      
+    <% }) %>
+    </ul>
+  </section>
+</main>
 
 
 

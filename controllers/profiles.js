@@ -69,18 +69,17 @@ function showPersonalBest(req, res) {
   console.log('profileId', req.params.profileId)
   console.log('pbId', req.params.pbId) 
   Profile.findById(req.params.profileId).then(profile => {
-    const pb = profile.pbs.indexOf(p => {
-      console.log(p)
-      p._id.equals(req.params.pbId)})
-    console.log(pb)
-  //   res.render('profiles/personalbest/edit', {
-  //     pbs,
-  //     title: 'Edit Personal Best'
-  //   })
-  // })
-  // .catch(err => {
-  //   console.log(err)
-  //   res.redirect(`/profiles/${req.user.profile._id}`)
+    const index = profile.pbs.findIndex(p => parseInt(p._id) === parseInt(req.params.pbId)
+    )
+    const pb = profile.pbs[index]
+    res.render('profiles/personalbest/edit', {
+      pb,
+      title: 'Edit Personal Best'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
   })
 }
 
@@ -102,8 +101,15 @@ function deletePersonalBest(req, res){
 
 function update(req, res) {
   Profile.findById(req.user.profile._id).then(profile => {
-
+    const index = profile.pbs.findIndex(p => parseInt(p._id) === parseInt(req.params.id)
+    )
+    profile.pbs[index].weight = req.body.weight
+    profile.save()
+    .then(()=> {
+      res.redirect(`/profiles/${req.user.profile._id}`)
+    })
   })
+  }
     
 
 
@@ -123,7 +129,7 @@ function update(req, res) {
   //   console.log(err)
   //   res.redirect(`/profiles/${req.user.profile._id}`)
   // })
-}
+
 
 
 
