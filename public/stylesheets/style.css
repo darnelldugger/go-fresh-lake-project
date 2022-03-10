@@ -29,9 +29,7 @@ body {
     "main main main"
     "footer footer";
 }
-header {
-  height: fit-content;
-}
+
 .navbar-brand {
   font-size: 3rem;
   display: flex;
@@ -61,6 +59,7 @@ main {
   padding-top: 4rem;
 }
 
+
 .card-title {
   display: flex;
   align-items: center;
@@ -84,6 +83,7 @@ h1 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: fit-content;
 }
 
 .nav-item {
