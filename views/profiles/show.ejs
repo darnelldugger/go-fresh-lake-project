@@ -35,12 +35,13 @@
         <% } %> 
 
         <% if (isSelf) { %> 
-          <a href="/profiles/profileId/personalbest/<%= personalbest._id %>?_method=DELETE" 
-            action=
-            method="POST"
-            >
-            <button type="submit" id="pb-edit-btn"><i class="fas fa-trash-can"></i> <%= personalbest.name %></button>
-        </a>
+          <form 
+          action="/profiles/personalbest/<%= personalbest._id %>?_method=DELETE" 
+          method="POST"
+          style="display: inline-block;"
+        >
+          <button type="submit">Delete<%= personalbest.name %></button>
+        </form>
         <% } %> 
       </div>   
     <% }) %>
