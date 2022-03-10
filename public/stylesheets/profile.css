@@ -163,8 +163,9 @@ img {
 }
 
 .details-btn {
- background-color: black;
- width: fit-content;
+background-color: black;
+width: fit-content;
+margin-top: 3rem;
 }
 
 .add-fish-list {
@@ -239,4 +240,20 @@ padding-bottom: 2rem;
   justify-content: center;
   flex-direction: column;
   padding-top: 3rem;
+}
+
+.record-pb-form > form {
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.record-pb-form > form > label {
+  padding: 2.3rem;
+}
+
+.record-pb-form > form > label > button {
+  padding-top: 3rem;
+  margin-top: 3rem;
 }

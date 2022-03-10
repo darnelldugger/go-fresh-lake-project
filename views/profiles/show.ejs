@@ -71,7 +71,7 @@
     <% if (profile.lagoon.length) { %>
       <ul class="lake-list">
         <% profile.lagoon.forEach(lakeVisit => { %>
-        <li id="lake-show-list"><%= lakeVisit.name %> </li>
+        <li id="lake-show-list"><%= lakeVisit.name %>, <%= lakeVisit.state %>  </li>
         <% }) %>
       </ul>
       <% } else { %>
