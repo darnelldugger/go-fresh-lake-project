@@ -66,35 +66,30 @@
 </div>
 </section>
   <section class="add-fish-list">
-    <% if (profile.lagoon.length > 0 ) { %>
-    <% if (isSelf)  {%> 
     <h1 class="add-pages-header">Lakes that you have visited</h1>
-    <ul class="lake-list">
-      <% profile.lagoon.forEach(lakeVisit => { %>
-       <li id="lake-show-list"><%= lakeVisit.name %> </li>
-      <% }) %>
-    </ul>
-    <form action="/profiles/<%= profile._id %>/lakes"/ method="post">
-      <select name="lakeId">
-        <% lakes.forEach(lake => { %>
-         <option value="<%= lake._id %>"><%= lake.name %> 
-        </option>
+    <% if (isSelf)  {%> 
+    <% if (profile.lagoon.length) { %>
+      <ul class="lake-list">
+        <% profile.lagoon.forEach(lakeVisit => { %>
+        <li id="lake-show-list"><%= lakeVisit.name %> </li>
         <% }) %>
-      </select>
-      <button type="submit"><i class="fas fa-plus"></i>Add Lake To Your Profile</button>
-    </form>
-    <% } %> 
-    <% } else { %>
-      <h2>
-        <%= isSelf ? "You don't" : `${profile.name} doesn't` %> have any lakes that you've been to recorded.
-      </h2> 
-      <% } %> 
-  </section>
-
+      </ul>
+      <% } else { %>
+        <h2>
+          <%= isSelf ? "You don't" : `${profile.name} doesn't` %> have any lakes that you've been to recorded.
+        </h2> 
+        <% } %> 
+        <% } %> 
+        <form action="/profiles/<%= profile._id %>/lakes"/ method="post">
+          <select name="lakeId">
+            <% lakes.forEach(lake => { %>
+            <option value="<%= lake._id %>"><%= lake.name %> 
+            </option>
+            <% }) %>
+          </select>
+          <button type="submit"><i class="fas fa-plus"></i>Add Lake To Your Profile</button>
+        </form>
+      </section>
 </main>
-     
-
-
-
 <%- include('../partials/footer') %>
       
