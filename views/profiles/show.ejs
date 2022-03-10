@@ -1,49 +1,55 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/profile.css">
 <%- include('../partials/nav') %>
 
 
-<main>
+<main class="profile-main">
+  <section class="avatar-section">
   <% if (profile.avatar) { %>
-    <div>
+    <div class="image-greeting">
       <img 
       class="profile-avatar"
       src="<%= profile.avatar %>" 
       alt="<%= profile.name %> avatar"
       >
+      <% } %>
+      <h1>Hello <%= isSelf ? "Angler" : profile.name %>!</h1>
     </div>
-    <% } %>
-    <h1>Hello <%= isSelf ? "Angler" : profile.name %>!</h1>
-  <% if (profile.pbs.length)  {%>
-    <h2>
+  </section>
+  <section class="top-details-profile">
+    <% if (profile.pbs.length)  {%>
+    <h1 class="add-pages-header">
       Personal Best List
-    </h2>
+    </h1>
     <% profile.pbs.forEach(personalbest => { %>
       <h4>
          Your personal best for <%= personalbest.name %> is <%= personalbest.weight %> lbs
       </h4>
+      <div class="pb-btn-grp">
       <% if (isSelf) { %> 
-        <a href="/profiles/<%= profile._id %>/personalbest/<%= personalbest._id %> /edit"
-          action=
-          method="get">
-          <button type="submit">Update <%= personalbest.name %></button>
-        </a>
-      <% } %> 
+          <a href="/profiles/<%= profile._id %>/personalbest/<%= personalbest._id %> /edit"
+            action=
+            method="get">
+            <button type="submit" id="pb-edit-btn"><i class="fas fa-pen-to-square"></i> <%= personalbest.name %></button>
+          </a>
+        <% } %> 
 
-      <% if (isSelf) { %> 
-        <a href="/profiles/personalbest/<%= personalbest._id %>?_method=DELETE" 
-          action=
-          method="POST"
-          >
-          <button type="submit">Delete <%= personalbest.name %></button>
-      </a>
-          
-      <% } %> 
+        <% if (isSelf) { %> 
+          <a href="/profiles/personalbest/<%= personalbest._id %>?_method=DELETE" 
+            action=
+            method="POST"
+            >
+            <button type="submit" id="pb-edit-btn"><i class="fas fa-trash-can"></i> <%= personalbest.name %></button>
+        </a>
+        <% } %> 
+      </div>   
     <% }) %>
   <% } else { %>
     <h2>
       <%= isSelf ? "You don't" : `${profile.name} doesn't` %> have any personal best recorded.
     </h2> 
   <% } %> 
+  <div class="record-pb-form">
   <% if (isSelf)  {%> 
     <h2>Record a Personal Best</h2>
     <form action="/profiles/<%= profile._id %>/personalbest" method="POST">
@@ -56,11 +62,13 @@
       <button type="submit">Add Personal Best</button>
     </form>
   <% } %>
-  <section class="profile-add-lake">
-    <h2>Lakes that you have visited</h2>
-    <ul>
+</div>
+</section>
+  <section class="add-fish-list">
+    <h1 class="add-pages-header">Lakes that you have visited</h1>
+    <ul class="lake-list">
       <% profile.lagoon.forEach(lakeVisit => { %>
-       <li><%= lakeVisit.name %> </li>
+       <li id="lake-show-list"><%= lakeVisit.name %> </li>
       <% }) %>
     </ul>
     <form action="/profiles/<%= profile._id %>/lakes"/ method="post">
