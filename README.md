@@ -35,7 +35,7 @@ https://trello.com/b/XekEqNoQ/gofreshlake
 # Future Enhancements:
 
 - Add google maps API
-- Social meda share buttons
-- AAU I want to see how many people caught fish by type when I view the details page.
-- Search bar for serching by state.
+- Social media share buttons
+- AAU I want to see how many people caught fish by type when I view the details page for lakes.
+- Add a search bar for searching by state in the Nav.
   
