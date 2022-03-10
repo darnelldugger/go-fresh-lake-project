@@ -23,7 +23,9 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   margin: 0;
 }
-
+#header {
+  height: fit-content;
+}
 .navbar-brand {
   font-size: 3rem;
   display: flex;
