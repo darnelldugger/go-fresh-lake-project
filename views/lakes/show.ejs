@@ -3,6 +3,7 @@
 
 <main>
   <section class="top-details">
+    <div class="details-area">
     <h4>Details provided by angler, <%= lake.owner.name %>. </h4>
     <h1><%= lake.name %> </h1>
     <h1>State: <%= lake.state %> </h1>
@@ -13,7 +14,7 @@
           <button type="submit" class="details-btn">Edit Lake</button>
         </form>
       <% } %> 
-   
+    </div>
 
   </section>
   <section class="add-fish-list">
@@ -30,9 +31,9 @@
         </option>
         <% }) %>
       </select>
-      <button type="submit">Add Fish to Lake</button>
+      <button type="submit"><i class="fas fa-plus"></i>Add Fish to Lake</button>
     </form>
-    
+    <div class="insights-section">
     <h1 class="add-pages-header">Add Insights To This Lake</h1>
     <form 
       id="add-review-form"
@@ -41,7 +42,7 @@
     >
       <label for="content-textarea"></label>
       <textarea name="content" id="content-textarea" placeholder="Insight"></textarea>
-      <button type="submit">Add Insight</button>
+      <button type="submit"><i class="fas fa-plus"></i>Add Insight</button>
     </form>
     <% if (lake.reviews.length) { %>
       <table>
@@ -63,6 +64,7 @@
     <% } else { %>
       <h3>No Insights Yet</h3>
     <% } %>
+  </div>
   </section>
 
 </main>

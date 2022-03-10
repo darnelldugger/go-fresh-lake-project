@@ -59,12 +59,14 @@
       <label>
         <input type="number" name="weight" autocomplete="off" placeholder="Weight of Fish">
       </label>
-      <button type="submit">Add Personal Best</button>
+      <button type="submit" class="details-btn"><i class="fas fa-plus"></i>Add Personal Best</button>
     </form>
   <% } %>
 </div>
 </section>
   <section class="add-fish-list">
+    <% if (profile.lagoon.length > 0 ) { %>
+    <% if (isSelf)  {%> 
     <h1 class="add-pages-header">Lakes that you have visited</h1>
     <ul class="lake-list">
       <% profile.lagoon.forEach(lakeVisit => { %>
@@ -78,12 +80,18 @@
         </option>
         <% }) %>
       </select>
-      <button type="submit">Add Lake To Your Profile</button>
+      <button type="submit"><i class="fas fa-plus"></i>Add Lake To Your Profile</button>
     </form>
-
+    <% } %> 
+    <% } else { %>
+      <h2>
+        <%= isSelf ? "You don't" : `${profile.name} doesn't` %> have any lakes that you've been to recorded.
+      </h2> 
+      <% } %> 
   </section>
 
 </main>
+     
 
 
 

@@ -4,17 +4,20 @@
 <main>
   <h1 class="add-pages-header"><%= title %> </h1>
   <h4>View list of fish to ensure it is not already added. 
-  <select>
-    <% fishes.forEach(function(fish) { %>
-      <option><%= fish.name %> </option>
-      <% }) %>
-    </select>
-  </h4>
-  <form action="/fishes" method="post">
-    <label for="name-input"></label>
-    <input type="text" name="name" id="name-input" placeholder="Name of Fish">
-    <button type="submit"><i class="fas fa-plus"></i></button>
-  </form>
+
+</h4>
+<form action="/fishes" method="post">
+  <label for="name-input"></label>
+  <input type="text" name="name" id="name-input" placeholder="Name of Fish">
+  <button type="submit"><i class="fas fa-plus"></i></button>
+</form>
+
+<ul class="lake-list">
+<% fishes.forEach(function(fish) { %>
+    <li id="lake-show-list"><%= fish.name %> </li>
+  </ul>
+  <% }) %>
+
   </main>
     
      
