@@ -10,7 +10,7 @@ router.post('/:id/lakes', isLoggedIn, profilesCtrl.addLakeVisit)
 router.post('/:id/personalbest', isLoggedIn, profilesCtrl.createPersonalBest)
 router.get('/:profileId/personalbest/:pbId/edit', isLoggedIn, profilesCtrl.showPersonalBest)
 router.put('/personalbest/:id', isLoggedIn, profilesCtrl.update)
-router.delete('/personalbest/:id', isLoggedIn, profilesCtrl.deletePersonalBest)
+router.delete('/profileId/personalbest/:id', isLoggedIn, profilesCtrl.deletePersonalBest)
 
 export {
   router

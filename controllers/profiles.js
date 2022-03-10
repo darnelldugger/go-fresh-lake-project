@@ -110,28 +110,7 @@ function update(req, res) {
     })
   })
   }
-    
-
-
-  // pbs.findById(req.params.id)
-  // .then(pbs => {
-  //   if(profile.pbs.equals(req.params.pbs_id)) {
-  //     console.log(pbs)
-  //     pbs.updateOne(req.body, {new: true})
-  //     .then(() => {
-  //       res.redirect(`profiles/${profile._id}`)
-  //     })
-  //   } else {
-  //     throw new Error ('Not authorized')
-  //   }
-  // })
-  // .catch(err => {
-  //   console.log(err)
-  //   res.redirect(`/profiles/${req.user.profile._id}`)
-  // })
-
-
-
+  
 
 
 export {
