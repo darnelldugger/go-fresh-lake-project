@@ -17,7 +17,11 @@
 <main>
   <section id="mainSec">
     <h1 id="mainH1">Discover and add fresh lakes from across the United States.</h1>
+    <div class="main-add-btn">
+      <a class="nav-link" href="/lakes/new"><i class="fas fa-plus"></i> Add A Lake</a>
+    </div>
     <ul class="lake-list">
+      
     <% lakes.forEach(lake => { %>
       <li id="lake-list-width">
         <a href="/lakes/<%= lake._id %> " id="list-font">
