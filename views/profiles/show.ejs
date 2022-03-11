@@ -23,7 +23,7 @@
     </h1>
     <% profile.pbs.forEach(personalbest => { %>
       <h4>
-         Your personal best for <%= personalbest.name %> is <%= personalbest.weight %> lbs
+        <%= isSelf ? "Your" : profile.name %> personal best for <%= personalbest.name %> is <%= personalbest.weight %> lbs
       </h4>
       <div class="pb-btn-grp">
       <% if (isSelf) { %> 
@@ -66,29 +66,29 @@
 </div>
 </section>
   <section class="add-fish-list">
-    <h1 class="add-pages-header">Lakes that you have visited</h1>
-    <% if (isSelf)  {%> 
+    <h1 class="add-pages-header">Lakes Visited</h1>
     <% if (profile.lagoon.length) { %>
       <ul class="lake-list">
         <% profile.lagoon.forEach(lakeVisit => { %>
-        <li id="lake-show-list"><%= lakeVisit.name %>, <%= lakeVisit.state %>  </li>
-        <% }) %>
-      </ul>
-      <% } else { %>
-        <h2>
-          <%= isSelf ? "You don't" : `${profile.name} doesn't` %> have any lakes that you've been to recorded.
-        </h2> 
-        <% } %> 
-        <% } %> 
+          <li id="lake-show-list"><%= lakeVisit.name %>, <%= lakeVisit.state %>  </li>
+          <% }) %>
+        </ul>
+        <% } else { %>
+          <h2>
+            <%= isSelf ? "You don't" : `${profile.name} doesn't` %> have any lakes that you've been to recorded.
+          </h2> 
+          <% } %> 
+          <% if (isSelf)  {%> 
         <form action="/profiles/<%= profile._id %>/lakes"/ method="post">
           <select name="lakeId">
             <% lakes.forEach(lake => { %>
-            <option value="<%= lake._id %>"><%= lake.name %> 
-            </option>
-            <% }) %>
-          </select>
-          <button type="submit"><i class="fas fa-plus"></i>Add Lake To Your Profile</button>
-        </form>
+              <option value="<%= lake._id %>"><%= lake.name %> 
+              </option>
+              <% }) %>
+            </select>
+            <button type="submit"><i class="fas fa-plus"></i>Add Lake To Your Profile</button>
+          </form>
+          <% } %> 
       </section>
 </main>
 <%- include('../partials/footer') %>
