@@ -24,7 +24,7 @@
       <li id="lake-show-list"><%= fishCaught.name %> </li>
       <% }) %>
     </ul>
-    <form action="/lakes/<%= lake._id %>/fishes " method="post">
+    <form action="/lakes/<%= lake._id %>/fishes " method="post" class="insight-form">
       <select name="fishId">
         <% fishes.forEach(fish => { %>
         <option value="<%= fish._id %>"><%= fish.name %> 
@@ -35,12 +35,11 @@
     </form>
     <div class="insights-section">
     <h1 class="add-pages-header">Add Insights To This Lake</h1>
-    <form 
+    <form class="insight-form" 
       id="add-review-form"
       action="/lakes/<%= lake._id %>/reviews"
       method="POST"
     >
-      <label for="content-textarea"></label>
       <textarea name="content" id="content-textarea" placeholder="Insight"></textarea>
       <button type="submit"><i class="fas fa-plus"></i>Add Insight</button>
     </form>

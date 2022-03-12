@@ -256,6 +256,17 @@ form > button {
   padding: 2rem;
 }
 
+.insight-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.insight-form > button {
+  margin-top: 1rem;
+}
+
 table {
   font-size: 15px;
 }
