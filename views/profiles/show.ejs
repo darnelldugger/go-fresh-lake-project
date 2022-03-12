@@ -78,6 +78,7 @@
             <%= isSelf ? "You don't" : `${profile.name} doesn't` %> have any lakes that have been recorded.
           </h2> 
           <% } %> 
+    <div class="record-pb-form">
           <% if (isSelf)  {%> 
         <form action="/profiles/<%= profile._id %>/lakes"/ method="post">
           <select name="lakeId">
@@ -86,10 +87,11 @@
               </option>
               <% }) %>
             </select>
-            <button type="submit"><i class="fas fa-plus"></i>Add Lake To Your Profile</button>
+            <button type="submit" id="profile-add-lake-btn"><i class="fas fa-plus"></i>Add Lake To Your Profile</button>
           </form>
           <% } %> 
-      </section>
+    </div>
+  </section>
 </main>
 <%- include('../partials/footer') %>
       
