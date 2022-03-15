@@ -30,7 +30,7 @@
           <a href="/profiles/<%= profile._id %>/personalbest/<%= personalbest._id %> /edit"
             action=
             method="get">
-            <button type="submit" id="pb-edit-btn"><i class="fas fa-pen-to-square"></i> <%= personalbest.name %></button>
+            <button type="submit" id="pb-edit-btn"><i class="fas fa-pen-to-square"></i> Edit</button>
           </a>
         <% } %> 
 
@@ -40,7 +40,7 @@
           method="POST"
           style="display: inline-block;"
         >
-          <button type="submit"><i class="fas fa-trash-can"></i><%= personalbest.name %></button>
+          <button type="submit"><i class="fas fa-trash-can"></i>Delete</button>
         </form>
         <% } %> 
       </div>   
